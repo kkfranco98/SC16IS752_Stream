@@ -19,8 +19,10 @@
    Please keep the above information when you use this code in your project.
  */
 
-#ifndef _SC16IS752_H_
-#define _SC16IS752_H_
+#pragma once
+
+#include <Wire.h>
+#include <SPI.h>
 
 #if ARDUINO >= 100
 #include "Arduino.h"
@@ -95,10 +97,10 @@
 
 // Application Related
 
-// #define     SC16IS750_CRYSTCAL_FREQ (14745600UL)
-#define SC16IS750_CRYSTCAL_FREQ (1843200UL)
+#define DEFAULT_SC16IS750_CRYSTCAL_FREQ (14745600UL)
+// // #define         SC16IS750_CRYSTCAL_FREQ (1843200UL)
 
-// #define     SC16IS750_CRYSTCAL_FREQ (16000000UL)
+// // #define     SC16IS750_CRYSTCAL_FREQ (16000000UL)
 // #define     SC16IS750_DEBUG_PRINT   (1)
 #define SC16IS750_PROTOCOL_I2C (0)
 #define SC16IS750_PROTOCOL_SPI (1)
@@ -114,7 +116,10 @@ class SC16IS752
 {
 public:
   SC16IS752(uint8_t prtcl = SC16IS750_PROTOCOL_I2C,
-            uint8_t addr = SC16IS750_ADDRESS_AD);
+            uint8_t addr = SC16IS750_ADDRESS_AD,
+            uint32_t freq = DEFAULT_SC16IS750_CRYSTCAL_FREQ,
+            TwoWire &wire = Wire);
+
   void begin(uint32_t baud_A,
              uint32_t baud_B);
   void beginA(uint32_t baud_A);
@@ -131,14 +136,12 @@ public:
   uint8_t ping();
 
   //	void setTimeout(uint32_t);
-  size_t readBytes(uint8_t channel, uint8_t *buffer, size_t length);
-  String readStringUntil(uint8_t channel, char terminator);
+  //	size_t readBytes(char *buffer, size_t length);
   int peek(uint8_t channel);
   void flush(uint8_t channel);
   uint8_t GPIOGetPortState(void);
   uint8_t InterruptPendingTest(uint8_t channel);
-  void SetPinInterrupt(uint8_t pin_number, bool int_ena);
-  uint8_t GetPinInterrupt(uint8_t pin_number);
+  void SetPinInterrupt(uint8_t io_int_ena);
   void InterruptControl(uint8_t channel,
                         uint8_t int_ena);
   void ModemPin(uint8_t gpio); // gpio == 0, gpio[7:4] are modem pins, gpio == 1 gpio[7:4] are gpios
@@ -151,6 +154,8 @@ private:
   uint8_t device_address_sspin;
   uint8_t protocol;
   bool initialized = false;
+  uint32_t _frequency;
+  TwoWire &_wire;
 
   //	uint32_t timeout;
   void Initialize();
@@ -193,5 +198,3 @@ private:
 
   //	int16_t readwithtimeout();
 };
-
-#endif // ifndef _SC16IS752_H_
