@@ -89,9 +89,7 @@
 // Application Related
 
 static const uint32_t DEFAULT_SC16IS750_CRYSTAL_FREQ = 14745600UL;
-// // #define         SC16IS750_CRYSTCAL_FREQ (1843200UL)
 
-// // #define     SC16IS750_CRYSTCAL_FREQ (16000000UL)
 // #define     SC16IS750_DEBUG_PRINT   (1)
 #define SC16IS750_PROTOCOL_I2C (0)
 #define SC16IS750_PROTOCOL_SPI (1)
@@ -109,7 +107,7 @@ class SC16IS752
 public:
   SC16IS752(uint8_t prtcl = SC16IS750_PROTOCOL_I2C,
             uint8_t addr = SC16IS750_ADDRESS_AD,
-            uint32_t freq = DEFAULT_SC16IS750_CRYSTCAL_FREQ,
+            uint32_t freq = DEFAULT_SC16IS750_CRYSTAL_FREQ,
             TwoWire &wire = Wire);
 
   void begin(uint32_t baud_A,
