@@ -1,26 +1,5 @@
-/*
-   Description:
-   This is a example code for Sandbox Electronics' I2C/SPI to UART bridge module.
-   You can get one of those products on
-   http://sandboxelectronics.com
-
-   Version:
-   V0.1
-
-   Release Date:
-   2014-02-16
-
-   Author:
-   Tiequan Shao          info@sandboxelectronics.com
-
-   Lisence:
-   CC BY-NC-SA 3.0
-
-   Please keep the above information when you use this code in your project.
- */
-
 // #define SC16IS750_DEBUG_PRINT
-#include <SC16IS752.h>
+#include "SC16IS752.h"
 
 SC16IS752::SC16IS752(uint8_t prtcl, uint8_t addr_sspin, uint32_t frequency, TwoWire &wire) : initialized(false), _frequency(frequency), _wire(wire)
 {

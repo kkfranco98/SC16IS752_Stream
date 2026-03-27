@@ -1,26 +1,30 @@
 {
-    "name": "SC16IS752",
-    "version": "1.0.3",
+    "name": "SC16IS752_Stream",
+    "version": "2.0.0",
     "keywords": [
       "serial", "io", "sc16is752", "i2c", "uart"
     ],
-    "description": "NXP SC16IS752 I2C UART bridge for ESP8266 and ESP32",
+    "description": "NXP SC16IS752 I2C UART bridge for ESP8266 and ESP32, fork for stream adpter",
     "repository":
     {
         "type": "git",
         "url": "https://github.com/TD-er/SC16IS752/"
     },
-    "authors":
-    [
-      {
-        "name": "Gijs Noorlander",
-        "email": "gijs.noorlander@gmail.com",
-        "maintainer": true
-      },
-      {
-        "name": "Tiequan Shao",
-        "email": "info@sandboxelectronics.com"
-      }
+    "authors": [
+        {
+            "name": "kkfranco98",
+            "maintainer": true,
+            "url": "https://github.com/kkfranco98"
+        },
+        {
+            "name": "Gijs Noorlander",
+            "email": "gijs.noorlander@gmail.com",
+        },
+        {
+            "name": "Tiequan Shao",
+            "email": "info@sandboxelectronics.com",
+            "maintainer": false
+        }
     ],
     "frameworks": "arduino",
     "platforms": [

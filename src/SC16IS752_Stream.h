@@ -3,6 +3,8 @@
 #include <Arduino.h>
 #include "SC16IS752.h"
 
+// Stream wrapper for a single SC16IS752 UART channel.
+// This allows channel A or B to be used with Arduino APIs expecting a Stream object.
 class SC16IS752_Stream : public Stream
 {
 public:

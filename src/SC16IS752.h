@@ -1,23 +1,14 @@
 /*
-   Description:
-   This is a example code for Sandbox Electronics' I2C/SPI to UART bridge module.
-   You can get one of those products on
-   http://sandboxelectronics.com
+   SC16IS752 Arduino library
 
-   Version:
-   V0.1
+   Fork and maintenance:
+   kkfranco98
 
-   Release Date:
-   2014-02-16
+   Based on earlier SC16IS752 implementations and adapted for
+   per-channel Stream compatibility.
 
-   Author:
-   Tiequan Shao          info@sandboxelectronics.com
-
-   Lisence:
-   CC BY-NC-SA 3.0
-
-   Please keep the above information when you use this code in your project.
- */
+   See repository README and LICENSE for authorship and licensing details.
+*/
 
 #pragma once
 
@@ -97,7 +88,7 @@
 
 // Application Related
 
-#define DEFAULT_SC16IS750_CRYSTCAL_FREQ (14745600UL)
+static const uint32_t DEFAULT_SC16IS750_CRYSTAL_FREQ = 14745600UL;
 // // #define         SC16IS750_CRYSTCAL_FREQ (1843200UL)
 
 // // #define     SC16IS750_CRYSTCAL_FREQ (16000000UL)
@@ -111,7 +102,8 @@
 
 #define SC16IS752_DEFAULT_SPEED 9600
 
-// class SC16IS752 : public Stream
+// Main SC16IS752 bridge class.
+// Per-channel Stream compatibility is provided by SC16IS752_Stream.
 class SC16IS752
 {
 public:

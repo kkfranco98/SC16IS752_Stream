@@ -1,3 +1,36 @@
+# Fork maintained by kkfranco98.
+
+Based on previous work by:
+- Gijs Noorlander
+- Tiequan Shao
+
+License: GPL-3.0-only
+
+### Added `Stream` object for each channel
+
+This fork adds a dedicated `Stream` wrapper for SC16IS752 channel A and channel B.
+
+The original library exposed the UARTs through channel-based functions such as `read(channel)`, `write(channel, value)` and `available(channel)`.  
+With the new `SC16IS752_Stream` class, each channel can now be used as a standard Arduino `Stream`.
+
+This improves compatibility with existing Arduino code and libraries that already work with `Stream`, without removing the original API.
+
+
+#### Example
+
+```cpp
+SC16IS752 bridge(SC16IS750_PROTOCOL_I2C, SC16IS750_ADDRESS_AD);
+SC16IS752_Stream uartA(bridge, SC16IS752_CHANNEL_A);
+SC16IS752_Stream uartB(bridge, SC16IS752_CHANNEL_B);
+
+bridge.begin(115200, 115200);
+
+uartA.println("Hello from channel A");
+if (uartB.available()) {
+    int c = uartB.read();
+}
+```
+
 # SC16IS752
 SC16IS752 Driver for ATmega328/ESP8266   
 
